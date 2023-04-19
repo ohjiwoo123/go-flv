@@ -8,9 +8,11 @@
 package tag
 
 import (
-	"github.com/yutopp/go-amf0"
 	"io"
 	"io/ioutil"
+	"sync"
+
+	"github.com/yutopp/go-amf0"
 )
 
 // ========================================
@@ -29,6 +31,7 @@ type FlvTag struct {
 	Timestamp uint32
 	StreamID  uint32      // 24bit
 	Data      interface{} // *AudioData | *VideoData | *ScriptData
+	mu        sync.Mutex
 }
 
 // Close
